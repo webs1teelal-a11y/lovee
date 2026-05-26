@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome My Love ❤️</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ── HEARTS BACKGROUND PARTICLES ── -->
+    <div class="hearts-bg" id="heartsBg"></div>
+
+    <!-- ══════════════════════════════════
+       LOGIN PAGE
+  ══════════════════════════════════ -->
+    <div class="login-page" id="loginPage">
+      <div class="login-wrapper">
+        <div class="login-card">
+          <div class="glow-ring"></div>
+          <h1 class="login-title">
+            Welcome My Love <span class="heart-pulse">❤️</span>
+          </h1>
+          <p class="login-sub">You're the reason I smile every single day</p>
+
+          <div class="input-group">
+            <span class="input-icon">🔒</span>
+            <input
+              type="password"
+              id="passwordInput"
+              class="password-input"
+              placeholder="Enter your secret password..."
+              autocomplete="off"
+              onkeydown="if (event.key === 'Enter') handleEnter();"
+            />
+            <button
+              class="eye-btn"
+              id="eyeBtn"
+              onclick="toggleEye()"
+              aria-label="Show password"
+            >
+              👁
+            </button>
+          </div>
+
+          <p class="error-msg" id="errorMsg"></p>
+
+          <button class="enter-btn" id="enterBtn" onclick="handleEnter()">
+            <span class="btn-text">Enter Our World</span>
+            <span class="btn-icon">✨</span>
+          </button>
+
+          <div class="loading-bar-wrap" id="loadingWrap">
+            <div class="loading-bar" id="loadingBar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+       MAIN PAGE (hidden until login)
+  ══════════════════════════════════ -->
+    <div class="main-page hidden" id="mainPage">
+      <!-- ── FLOATING MUSIC PLAYER ── -->
+      <div class="music-player" id="musicPlayer">
+        <div class="vinyl" id="vinyl">🎵</div>
+        <div class="music-bars" id="musicBars">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <button
+          class="play-btn"
+          id="playBtn"
+          onclick="toggleMusic()"
+          aria-label="Play music"
+        >
+          ▶
+        </button>
+        <audio id="bgMusic" loop>
+          <source
+            src="photos/WhatsApp Audio 2026-05-26 at 6.27.13 AM.mpeg"
+            type="audio/mpeg"
+          />
+        </audio>
+      </div>
+
+      <!-- SECTION 1 — INTRO ANIMATION -->
+      <section class="intro-section" id="introSection">
+        <div class="intro-words" id="introWords"></div>
+        <button class="skip-btn" id="skipBtn" onclick="skipIntro()">
+          Skip ↓
+        </button>
+      </section>
+
+      <!-- SECTION 2 — LOVE LETTER -->
+      <section class="section love-letter-section reveal-section">
+        <div class="section-label">A Letter From My Heart</div>
+        <div class="letter-card">
+          <div class="letter-glow"></div>
+          <div class="letter-icon">💌</div>
+          <p class="letter-text" dir="rtl">
+            كل سنة وانتي أجمل حاجة حصلتلي،<br />
+            وجودك في حياتي بيخلّي كل يوم أحلى.<br />
+            بحبك أكتر من أي كلام ممكن يوصف ❤️
+          </p>
+          <div class="letter-signature">— Always yours</div>
+        </div>
+      </section>
+
+      <!-- SECTION 3 — PHOTO GALLERY -->
+      <section class="section gallery-section reveal-section">
+        <div class="section-label">Our Memories</div>
+        <div class="gallery-grid">
+          <!-- Row 1+2 : tall-left | small | small -->
+          <div class="gallery-item tall">
+            <img
+              src="photos/WhatsApp Image 2026-05-26 at 6.24.15 AM (2).jpeg"
+              alt="Photo 1"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="photos/WhatsApp Image 2026-05-26 at 6.24.15 AM (1).jpeg"
+              alt="Photo 2"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="photos/WhatsApp Image 2026-05-26 at 6.24.16 AM (2).jpeg"
+              alt="Photo 3"
+            />
+          </div>
+
+          <!-- Row 2 continues: wide fills col 2+3 -->
+          <div class="gallery-item wide">
+            <img
+              src="photos/WhatsApp Imaage 2026-05-26 at 6.24.15 AM (1).jpeg"
+              alt="Photo 4"
+            />
+          </div>
+
+          <!-- Row 3 : small | small | small  (3 equal) -->
+          <div class="gallery-item">
+            <img
+              src="photos/WhatsApp Image 2026-05-26 at 6.24.16 AM.jpeg"
+              alt="Photo 5"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="photos/WhatsApp Image 2026-05-26 at 6.24.16 AM (1).jpeg"
+              alt="Photo 6"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="photos/WhatsApp Image 2026-05-26 at 6.24.15 AM.jpeg"
+              alt="Photo 7"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4 — MEMORY GAME -->
+      <section class="section game-section reveal-section">
+        <div class="section-label">Play With Me 🎮</div>
+        <p class="game-hint">Match all the pairs to unlock your surprise!</p>
+        <div class="game-grid" id="gameGrid"></div>
+        <div class="game-status" id="gameStatus"></div>
+      </section>
+
+      <!-- SECTION 5 — REWARD (hidden until win) -->
+      <section
+        class="section reward-section reveal-section hidden-reward"
+        id="rewardSection"
+      >
+        <div class="section-label">Your Surprise ✨</div>
+        <div class="reward-card">
+          <div class="reward-img-placeholder">
+            <img
+              src="photos/WhatsApp Image 2026-05-26 at 7.16.25 AM.jpeg"
+              alt=""
+            />
+          </div>
+          <div class="qr-placeholder">
+            <div class="qr-box">
+              <img
+                src="photos/WhatsApp Image 2026-05-26 at 6.23.05 AM.jpeg"
+                alt="QR Code"
+              />
+            </div>
+            <p class="qr-text">Scan this QR for your surprise ❤️</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="site-footer reveal-section">
+        <div class="footer-hearts" id="footerHearts"></div>
+        <p class="footer-text">
+          Made with love for the most beautiful girl in my life ❤️
+        </p>
+      </footer>
+
+      <!-- Confetti overlay -->
+      <div class="confetti-overlay hidden" id="confettiOverlay"></div>
+    </div>
+    <!-- /.main-page -->
+
+    <script src="app.js"></script>
+  </body>
+</html>
